@@ -27,8 +27,7 @@ require("lspconfig").lua_ls.setup {
     },
   }
 }
-lspconfig.solargraph.setup({})
- lspconfig.tsserver.setup({})
+lspconfig.tsserver.setup({})
 require("lspconfig").pyright.setup({})
 require("lspconfig").tailwindcss.setup({})
 require("lspconfig").cssls.setup({})
