@@ -19,3 +19,9 @@ vim.cmd [[ set termguicolors ]]
 
 --Line numbers
 vim.wo.number = true
+
+vim.api.nvim_create_autocmd({ "FocusLost" }, {
+  callback = function()
+    vim.cmd [[ wa ]]
+  end
+})

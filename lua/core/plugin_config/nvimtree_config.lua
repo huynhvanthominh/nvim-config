@@ -7,8 +7,13 @@ require("nvim-tree").setup({
     group_empty = true,
   },
   filters = {
-    dotfiles = true,
+    dotfiles = false,
   },
+  git = {
+    ignore = false
+  }
 })
 
 vim.keymap.set('n', '<c-n>', ':NvimTreeFindFile<CR>')
+
+vim.keymap.set('n', '<leader>t', ':NvimTreeOpen<CR>')
