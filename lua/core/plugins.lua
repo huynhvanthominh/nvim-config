@@ -34,7 +34,12 @@ require("lazy").setup({
     run = "cd app && npm install",
   },
   {
-    "nvim-telescope/telescope.nvim", tag = "0.1.4",
+    "nvim-telescope/telescope.nvim",
+    tag = "0.1.4",
     dependencies = { "nvim-lua/plenary.nvim" }
   },
+  {
+    'stevearc/conform.nvim',
+    opts = {},
+  }
 })

@@ -12,3 +12,19 @@ require("core.plugin_config.oil")
 require("core.plugin_config.markdown_preview")
 require("core.plugin_config.swagger-preview")
 require("core.plugin_config.nvimtree_config")
+require("conform").setup({
+  formatters_by_ft = {
+    lua = { "stylua" },
+    -- Conform will run multiple formatters sequentially
+    python = { "isort", "black" },
+    -- Use a sub-list to run only the first available formatter
+    --
+    typescript = { { "eslint", "prettierd", "prettier" } },
+    javascript = { { "eslint", "prettierd", "prettier" } },
+  },
+  format_on_save = {
+    -- These options will be passed to conform.format()
+    timeout_ms = 500,
+    lsp_fallback = true,
+  },
+})

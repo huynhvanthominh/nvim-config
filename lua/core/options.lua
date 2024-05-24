@@ -19,12 +19,14 @@ vim.cmd [[ set termguicolors ]]
 vim.opt.number = true
 vim.opt.ruler = false
 vim.opt.relativenumber = true
-
+vim.opt.clipboard = "unnamedplus" -- copy/paste to system clipboard
+vim.opt.spell = true
+vim.opt.spelllang = "en_us"
 --Line numbers
 vim.wo.number = true
 
-vim.api.nvim_create_autocmd({ "FocusLost" }, {
-  callback = function()
-    vim.cmd [[ wa ]]
-  end
-})
+-- vim.api.nvim_create_autocmd({ "FocusLost" }, {
+--   callback = function()
+-- vim.cmd [[ wa ]]
+-- end
+-- })
