@@ -20,6 +20,20 @@ require("core.keymaps")
 require("core.plugins")
 require("core.plugin_config")
 -- Setup language servers.
+require("lspconfig").html.setup({
+  settings = {
+    html = {
+      format = {
+        templating = true,
+        wrapAttributes = 'auto',
+      },
+      hover = {
+        documentation = true,
+        references = true,
+      },
+    },
+  },
+})
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
