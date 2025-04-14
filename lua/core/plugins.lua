@@ -45,5 +45,6 @@ require("lazy").setup({
   {
     'stevearc/conform.nvim',
     opts = {},
-  }
+  },
+  "start/copilot.vim"
 })
