@@ -55,12 +55,7 @@ require("lspconfig").html.setup({
 })
 require("lspconfig").eslint.setup({})
 lspconfig.solidity.setup({})
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-require 'lspconfig'.cssls.setup {
-  capabilities = capabilities,
-}
+require('lspconfig').cssls.setup({})
 
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
