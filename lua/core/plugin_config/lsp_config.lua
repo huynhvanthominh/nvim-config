@@ -1,5 +1,5 @@
 require("mason-lspconfig").setup({
-  ensure_installed = { "lua_ls", "tsserver", "html", 'tailwindcss', 'cssls' }
+  ensure_installed = { "lua_ls", 'ts_ls', "html", 'tailwindcss', 'cssls' }
 })
 
 local lspconfig = require('lspconfig')
@@ -27,16 +27,27 @@ require("lspconfig").lua_ls.setup {
     },
   }
 }
-lspconfig.tsserver.setup({
+
+require 'lspconfig'.ts_ls.setup {
   init_options = {
-    hostInfo = "neovim",
-    preferences = {
-      includeCompletionsForModuleExports = true,
-      includeCompletionsForImportStatements = true,
-      importModuleSpecifierPreference = "none-relative",
+    plugins = {
+      {
+        name = "@vue/typescript-plugin",
+        location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
+        languages = { "javascript", "typescript", "vue" },
+      },
     },
-  }
-})
+  },
+  filetypes = {
+    "javascript",
+    "typescript",
+    "vue",
+    "typescript.tsx",
+    "javascript.jsx",
+    "typescriptreact",
+  },
+}
+
 require("lspconfig").jsonls.setup({})
 require("lspconfig").tailwindcss.setup({})
 require("lspconfig").html.setup({
