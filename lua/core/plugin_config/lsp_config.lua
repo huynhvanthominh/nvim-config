@@ -1,5 +1,6 @@
 require("mason-lspconfig").setup({
-  ensure_installed = { "lua_ls", 'ts_ls', "html", 'tailwindcss', 'cssls' }
+  ensure_installed = { "lua_ls", 'ts_ls', "html", 'tailwindcss', 'cssls' },
+  highlight = { enable = true },
 })
 
 local lspconfig = require('lspconfig')
@@ -11,6 +12,12 @@ lsp_defaults.capabilities = vim.tbl_deep_extend(
   lsp_defaults.capabilities,
   require('cmp_nvim_lsp').default_capabilities()
 )
+
+lspconfig.cucumber_language_server.setup({
+  cmd = { "cucumber-language-server", "--stdio" },
+  filetypes = { "gherkin" },
+  root_dir = lspconfig.util.root_pattern("package.json", ".git"),
+})
 
 require("lspconfig").lua_ls.setup {
   settings = {
@@ -94,4 +101,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.lsp.buf.format { async = true }
     end, opts)
   end,
+})
+
+vim.filetype.add({
+  extension = {
+    feature = "gherkin",
+  },
 })
