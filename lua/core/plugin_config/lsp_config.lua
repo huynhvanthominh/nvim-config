@@ -45,6 +45,14 @@ require 'lspconfig'.ts_ls.setup {
       },
     },
   },
+
+  settings = {
+    preferences = {
+      includeCompletionsForModuleExports = true,
+      includeCompletionsForImportStatements = true,
+      importModuleSpecifier = "non-relative",
+    },
+  },
   filetypes = {
     "javascript",
     "typescript",
