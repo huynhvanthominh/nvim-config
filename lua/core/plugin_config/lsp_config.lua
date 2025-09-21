@@ -1,5 +1,5 @@
 require("mason-lspconfig").setup({
-  ensure_installed = { "lua_ls", 'ts_ls', "html", 'tailwindcss', 'cssls' },
+  ensure_installed = { "lua_ls", "html", 'tailwindcss', 'cssls', 'tsserver' },
   highlight = { enable = true },
 })
 
@@ -35,33 +35,39 @@ require("lspconfig").lua_ls.setup {
   }
 }
 
-require 'lspconfig'.ts_ls.setup {
-  init_options = {
-    plugins = {
-      {
-        name = "@vue/typescript-plugin",
-        location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
-        languages = { "javascript", "typescript", "vue" },
-      },
-    },
-  },
+require("lspconfig").tsserver.setup({
+  on_attach = function(client, bufnr)
+    print("✅ tsserver attached")
+  end,
+});
 
-  settings = {
-    preferences = {
-      includeCompletionsForModuleExports = true,
-      includeCompletionsForImportStatements = true,
-      importModuleSpecifier = "non-relative",
-    },
-  },
-  filetypes = {
-    "javascript",
-    "typescript",
-    "vue",
-    "typescript.tsx",
-    "javascript.jsx",
-    "typescriptreact",
-  },
-}
+-- require 'lspconfig'.ts_ls.setup {
+--   init_options = {
+--     plugins = {
+--       {
+--         name = "@vue/typescript-plugin",
+--         location = "/usr/local/lib/node_modules/@vue/typescript-plugin",
+--         languages = { "javascript", "typescript", "vue" },
+--       },
+--     },
+--   },
+--
+--   settings = {
+--     preferences = {
+--       includeCompletionsForModuleExports = true,
+--       includeCompletionsForImportStatements = true,
+--       importModuleSpecifier = "non-relative",
+--     },
+--   },lua print(vim.inspect(require("mason-lspconfig").get_available_servers()))lua print(vim.inspect(require("mason-lspconfig").get_available_servers()))lua print(vim.inspect(require("mason-lspconfig").get_available_servers()))
+--   filetypes = {
+--     "javascript",
+--     "typescript",
+--     "vue",
+--     "typescript.tsx",
+--     "javascript.jsx",
+--     "typescriptreact",
+--   },
+-- }
 
 require("lspconfig").jsonls.setup({})
 require("lspconfig").tailwindcss.setup({})
